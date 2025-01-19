@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfume Brand</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        section {
+            padding: 2rem;
+            text-align: center;
+        }
+        .about, .products {
+            background-color: #ffffff;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+        .about p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        .about h2, .products h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        .about img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 15px;
+        }
+        .about .team {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .team-member {
+            text-align: center;
+            margin: 0 20px;
+        }
+        .team-member img {
+            margin-bottom: 10px;
+        }
+        .team-member p {
+            font-size: 1rem;
+            margin-top: 0;
+            color: #333;
+        }
+        /* Carousel for products */
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 2rem;
+        }
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+        .product-item {
+            flex: none;
+            width: 300px;
+            background-color: #f9f9f9;
+            padding: 1rem;
+            margin: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .product-item:hover {
+            transform: scale(1.05);
+        }
+        .product-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product-item h3 {
+            margin: 1rem 0 0.5rem;
+            font-size: 1.2rem;
+        }
+        .product-item p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            color: #555;
+        }
+        .product-item .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            color: #e74c3c;
+        }
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .modal-content img {
+            width: 80%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover, .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to Your Perfume Brand</h1>
+    <p>Elegance in Every Scent</p>
+</header>
+
+<section class="about">
+    <h2>About Us</h2>
+    <p>We are a premium perfume brand committed to creating sophisticated scents that embody elegance and style. Meet the creative team behind our brand:</p>
+    <div class="team">
+        <!-- Team Member 1 -->
+        <div class="team-member">
+            <img src="https://via.placeholder.com/100" alt="Team Member 1">
+            <p>John Doe</p>
+        </div>
+        <!-- Team Member 2 -->
+        <div class="team-member">
+            <img src="https://via.placeholder.com/100" alt="Team Member 2">
+            <p>Jane Smith</p>
+        </div>
+        <!-- Team Member 3 -->
+        <div class="team-member">
+            <img src="https://via.placeholder.com/100" alt="Team Member 3">
+            <p>Robert Brown</p>
+        </div>
+        <!-- Team Member 4 -->
+        <div class="team-member">
+            <img src="https://via.placeholder.com/100" alt="Team Member 4">
+            <p>Emily Johnson</p>
+        </div>
+        <!-- Team Member 5 -->
+        <div class="team-member">
+            <img src="https://via.placeholder.com/100" alt="Team Member 5">
+            <p>Michael Lee</p>
+        </div>
+    </div>
+</section>
+
+<section class="products">
+    <h2>Our Products</h2>
+    <div class="carousel">
+        <!-- Product 1 -->
+        <div class="product-item" onclick="openModal('product1')">
+            <img src="C:\Users\shehz\OneDrive\Documents\CODING\HTMLstuff\Evienne\PerfumeImages\1.png" alt="Perfume 1">
+            <h3>Fragrance Bliss</h3>
+            <p>A delightful floral scent perfect for daytime wear.</p>
+            <div class="price">$79.99</div>
+        </div>
+        <!-- Product 2 -->
+        <div class="product-item" onclick="openModal('product2')">
+            <img src="C:\Users\shehz\OneDrive\Documents\CODING\HTMLstuff\Evienne\PerfumeImages\2.png" alt="Perfume 2">
+            <h3>Midnight Whisper</h3>
+            <p>A bold, mysterious fragrance for evening occasions.</p>
+            <div class="price">$99.99</div>
+        </div>
+        <!-- Product 3 -->
+        <div class="product-item" onclick="openModal('product3')">
+            <img src="C:\Users\shehz\OneDrive\Documents\CODING\HTMLstuff\Evienne\PerfumeImages\3.png" alt="Perfume 3">
+            <h3>Golden Serenity</h3>
+            <p>An elegant blend of warm, spicy notes with a touch of vanilla.</p>
+            <div class="price">$89.99</div>
+        </div>
+        <!-- Product 4 -->
+        <div class="product-item" onclick="openModal('product4')">
+            <img src="C:\Users\shehz\OneDrive\Documents\CODING\HTMLstuff\Evienne\PerfumeImages\4.png" alt="Perfume 4">
+            <h3>Summer Escape</h3>
+            <p>A refreshing citrus and ocean breeze scent.</p>
+            <div class="price">$74.99</div>
+        </div>
+        <!-- Product 5 -->
+        <div class="product-item" onclick="openModal('product5')">
+            <img src="C:\Users\shehz\OneDrive\Documents\CODING\HTMLstuff\Evienne\PerfumeImages\5.png" alt="Perfume 5">
+            <h3>Winter Allure</h3>
+            <p>A rich, cozy fragrance with hints of cinnamon and amber.</p>
+            <div class="price">$89.99</div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal for product details -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <img id="modalImage" src="" alt="Product Image">
+        <p id="modalDescription"></p>
+        <p><strong>Longevity:</strong> <span id="modalLongevity"></span></p>
+        <p><strong>Occasion:</strong> <span id="modalOccasion"></span></p>
+        <div id="modalPrice"></div>
+    </div>
+</div>
+
+<section>
+    <h2>Contact Us</h2>
+    <!-- Contact form or other information -->
+</section>
+
+<script>
+    const products = {
+        product1: {
+            title: 'Fragrance Bliss',
+            description: 'A delightful floral scent perfect for daytime wear. Notes of jasmine and rose blended with light citrus accents.',
+            longevity: '6-8 hours',
+            occasion: 'Daytime',
+            image: 'C:/Users/shehz/OneDrive/Documents/CODING/HTMLstuff/Evienne/PerfumeImages/1.png',
+            price: '$79.99'
+        },
+        product2: {
+            title: 'Midnight Whisper',
+            description: 'A bold, mysterious fragrance for evening occasions. This perfume captivates with notes of musk and sandalwood.',
+            longevity: '8-10 hours',
+            occasion: 'Evening',
+            image: 'C:/Users/shehz/OneDrive/Documents/CODING/HTMLstuff/Evienne/PerfumeImages/2.png',
+            price: '$99.99'
+        },
+        product3: {
+            title: 'Golden Serenity',
+            description: 'An elegant blend of warm, spicy notes with a touch of vanilla. Perfect for those who love cozy fragrances.',
+            longevity: '6-8 hours',
+            occasion: 'Formal',
+            image: 'C:/Users/shehz/OneDrive/Documents/CODING/HTMLstuff/Evienne/PerfumeImages/3.png',
+            price: '$89.99'
+        },
+        product4: {
+            title: 'Summer Escape',
+            description: 'A refreshing citrus and ocean breeze scent. Perfect for hot summer days to feel refreshed and energized.',
+            longevity: '4-6 hours',
+            occasion: 'Casual',
+            image: 'C:/Users/shehz/OneDrive/Documents/CODING/HTMLstuff/Evienne/PerfumeImages/4.png',
+            price: '$74.99'
+        },
+        product5: {
+            title: 'Winter Allure',
+            description: 'A rich, cozy fragrance with hints of cinnamon and amber. Ideal for cold nights and special occasions.',
+            longevity: '8-10 hours',
+            occasion: 'Winter evenings',
+            image: 'C:/Users/shehz/OneDrive/Documents/CODING/HTMLstuff/Evienne/PerfumeImages/5.png',
+            price: '$89.99'
+        }
+    };
+
+    function openModal(productId) {
+        const product = products[productId];
+        document.getElementById('modalTitle').textContent = product.title;
+        document.getElementById('modalDescription').textContent = product.description;
+        document.getElementById('modalLongevity').textContent = product.longevity;
+        document.getElementById('modalOccasion').textContent = product.occasion;
+        document.getElementById('modalImage').src = product.image;
+        document.getElementById('modalPrice').textContent = product.price;
+        document.getElementById('modal').style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = "none";
+    }
+</script>
+
+</body>
+</html>
